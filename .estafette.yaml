@@ -1,0 +1,25 @@
+builder:
+  track: dev
+
+labels:
+  app: docker-dotnet
+  app-group: travix-various
+  team: travix-team
+  language: docker
+
+stages:
+  bake:
+    image: extensions/docker:dev
+    action: build
+    container: dotnet
+    repositories:
+    - travix
+
+  push-to-docker-hub:
+    image: extensions/docker:dev
+    action: push
+    container: dotnet
+    repositories:
+    - travix
+    tags:
+    - ${ESTAFETTE_GIT_BRANCH}

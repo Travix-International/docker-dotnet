@@ -1,6 +1,3 @@
-builder:
-  track: dev
-
 labels:
   app: docker-dotnet
   app-group: travix-various
@@ -9,14 +6,14 @@ labels:
 
 stages:
   bake:
-    image: extensions/docker:dev
+    image: extensions/docker:stable
     action: build
     container: dotnet
     repositories:
     - travix
 
   push-to-docker-hub:
-    image: extensions/docker:dev
+    image: extensions/docker:stable
     action: push
     container: dotnet
     repositories:
